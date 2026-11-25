@@ -1,6 +1,10 @@
 package cofh.thermal.foundation.init.data.tables;
 
 import cofh.lib.init.data.loot.BlockLootSubProviderCoFH;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -15,6 +19,14 @@ import static cofh.thermal.foundation.init.registries.TFndIDs.*;
 
 public class TFndBlockLootTables extends BlockLootSubProviderCoFH {
 
+    private final Holder<Enchantment> fortune;
+
+    public TFndBlockLootTables(HolderLookup.Provider registries) {
+
+        super(registries);
+        fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
+    }
+
     @Override
     protected void generate() {
 
@@ -23,29 +35,29 @@ public class TFndBlockLootTables extends BlockLootSubProviderCoFH {
 
         add(regBlocks.get(ID_APATITE_ORE), createSilkTouchDispatchTable(regBlocks.get(ID_APATITE_ORE), applyExplosionDecay(regBlocks.get(ID_APATITE_ORE), LootItem.lootTableItem(regItems.get("apatite"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
         add(regBlocks.get(ID_CINNABAR_ORE), createSilkTouchDispatchTable(regBlocks.get(ID_CINNABAR_ORE), applyExplosionDecay(regBlocks.get(ID_CINNABAR_ORE), LootItem.lootTableItem(regItems.get("cinnabar"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
         add(regBlocks.get(ID_NITER_ORE), createSilkTouchDispatchTable(regBlocks.get(ID_NITER_ORE), applyExplosionDecay(regBlocks.get(ID_NITER_ORE), LootItem.lootTableItem(regItems.get("niter"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
         add(regBlocks.get(ID_SULFUR_ORE), createSilkTouchDispatchTable(regBlocks.get(ID_SULFUR_ORE), applyExplosionDecay(regBlocks.get(ID_SULFUR_ORE), LootItem.lootTableItem(regItems.get("sulfur"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
 
         add(regBlocks.get(deepslate(ID_APATITE_ORE)), createSilkTouchDispatchTable(regBlocks.get(deepslate(ID_APATITE_ORE)), applyExplosionDecay(regBlocks.get(ID_APATITE_ORE), LootItem.lootTableItem(regItems.get("apatite"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 9.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
         add(regBlocks.get(deepslate(ID_CINNABAR_ORE)), createSilkTouchDispatchTable(regBlocks.get(deepslate(ID_CINNABAR_ORE)), applyExplosionDecay(regBlocks.get(ID_CINNABAR_ORE), LootItem.lootTableItem(regItems.get("cinnabar"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
         add(regBlocks.get(deepslate(ID_NITER_ORE)), createSilkTouchDispatchTable(regBlocks.get(deepslate(ID_NITER_ORE)), applyExplosionDecay(regBlocks.get(ID_NITER_ORE), LootItem.lootTableItem(regItems.get("niter"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
         add(regBlocks.get(deepslate(ID_SULFUR_ORE)), createSilkTouchDispatchTable(regBlocks.get(deepslate(ID_SULFUR_ORE)), applyExplosionDecay(regBlocks.get(ID_SULFUR_ORE), LootItem.lootTableItem(regItems.get("sulfur"))
                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 5.0F)))
-                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+                .apply(ApplyBonusCount.addOreBonusCount(fortune)))));
 
         add(regBlocks.get(ID_LEAD_ORE), getSilkTouchOreTable(regBlocks.get(ID_LEAD_ORE), regItems.get("raw_lead")));
         add(regBlocks.get(ID_NICKEL_ORE), getSilkTouchOreTable(regBlocks.get(ID_NICKEL_ORE), regItems.get("raw_nickel")));

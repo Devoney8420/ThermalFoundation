@@ -138,12 +138,12 @@ public class TFndBlocks {
 
     private static void registerWoodBlocks() {
 
-        blocksTab(150, registerBlock(ID_RUBBERWOOD_LOG, () -> Blocks.log(TERRACOTTA_GREEN, QUARTZ), ID_THERMAL_FOUNDATION));
-        blocksTab(150, registerBlock(ID_STRIPPED_RUBBERWOOD_LOG, () -> Blocks.log(TERRACOTTA_GREEN, TERRACOTTA_GREEN), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_RUBBERWOOD_LOG, () -> new RotatedPillarBlock(ofFullCopy(Blocks.OAK_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == net.minecraft.core.Direction.Axis.Y ? TERRACOTTA_GREEN : QUARTZ)), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_STRIPPED_RUBBERWOOD_LOG, () -> new RotatedPillarBlock(ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(TERRACOTTA_GREEN)), ID_THERMAL_FOUNDATION));
         blocksTab(150, registerBlock(ID_RUBBERWOOD_WOOD, () -> new RotatedPillarBlock(of().mapColor(QUARTZ).strength(2.0F).sound(SoundType.WOOD)), ID_THERMAL_FOUNDATION));
         blocksTab(150, registerBlock(ID_STRIPPED_RUBBERWOOD_WOOD, () -> new RotatedPillarBlock(of().mapColor(TERRACOTTA_GREEN).strength(2.0F).sound(SoundType.WOOD)), ID_THERMAL_FOUNDATION));
         blocksTab(150, registerBlock(ID_RUBBERWOOD_SAPLING, () -> new SaplingBlock(TFndFeatures.RUBBERWOOD, of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)), ID_THERMAL_FOUNDATION));
-        blocksTab(150, registerBlock(ID_RUBBERWOOD_LEAVES, () -> Blocks.leaves(SoundType.GRASS), ID_THERMAL_FOUNDATION));
+        blocksTab(150, registerBlock(ID_RUBBERWOOD_LEAVES, () -> new LeavesBlock(ofFullCopy(Blocks.OAK_LEAVES).sound(SoundType.GRASS)), ID_THERMAL_FOUNDATION));
 
         if (Blocks.FLOWER_POT instanceof FlowerPotBlock) {
             registerBlockOnly(ID_POTTED_RUBBERWOOD_SAPLING, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLOCKS.getSup(ID_RUBBERWOOD_SAPLING), BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));

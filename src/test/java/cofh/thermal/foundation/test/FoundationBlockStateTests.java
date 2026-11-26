@@ -45,6 +45,7 @@ public final class FoundationBlockStateTests {
     public FoundationBlockStateTests(IEventBus bus) {
         bus.addListener(FoundationBlockStateTests::gather);
         bus.addListener(FoundationWorldLoadTests::gather);
+        bus.addListener(FoundationOreGenerationTests::gather);
     }
 
     private static void gather(GatherDataEvent event) {
